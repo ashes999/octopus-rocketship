@@ -35,11 +35,17 @@ class ColourComponent extends SpriteComponent
 
     override public function onEvent(event:String)
     {
+        // TODO: dry with ImageComponent.onEvent
         super.onEvent(event);
 
-        var position = this.parent.get(PositionComponent);
-        this.sprite.x = position.x;
-        this.sprite.y = position.y;        
+        if (event == "Moved") {
+            var position = this.parent.get(PositionComponent);
+            if (position != null)
+            {
+                this.sprite.x = position.x;
+                this.sprite.y = position.y;        
+            }
+        }
     }
 
     private function makeSprite():FlxSprite

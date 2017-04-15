@@ -1,13 +1,14 @@
 package turbo.ecs;
 
 import turbo.ecs.components.AbstractComponent;
+import turbo.ecs.components.CameraComponent;
 import turbo.ecs.components.ColourComponent;
 import turbo.ecs.components.HealthComponent;
 import turbo.ecs.components.ImageComponent;
-import turbo.ecs.components.PositionComponent;
 import turbo.ecs.components.KeyboardInputComponent;
-import turbo.ecs.components.CameraComponent;
 import turbo.ecs.components.MouseClickComponent;
+import turbo.ecs.components.PositionComponent;
+import turbo.ecs.components.VelocityComponent;
 
 class Entity
 {
@@ -132,6 +133,12 @@ class Entity
     public function trackWithCamera():Entity
     {
         this.add(new CameraComponent(this));
+        return this;
+    }
+
+    public function velocity(vx:Float, vy:Float):Entity
+    {
+        this.add(new VelocityComponent(vx, vy, this));
         return this;
     }
     

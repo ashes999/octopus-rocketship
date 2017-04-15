@@ -38,6 +38,7 @@ class ImageComponent extends SpriteComponent
 
     override public function onEvent(event:String)
     {
+        // TODO: dry with ColourComponent.onEvent
         super.onEvent(event);
 
         if (event == "Moved") {

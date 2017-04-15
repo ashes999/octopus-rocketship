@@ -9,6 +9,8 @@ class CatchFishState extends TurboState
 {
 	private static inline var NUM_FISH:Int = 5;
 	private var random = new FlxRandom();
+	private var width = Std.int(FlxG.stage.stageWidth);
+	private var height = Std.int(FlxG.stage.stageHeight);
 
 	override public function create():Void
 	{
@@ -20,11 +22,15 @@ class CatchFishState extends TurboState
 		for (i in 0...NUM_FISH)
 		{
 			var fish = new Entity().colour(255, 128, 255).size(70, 32);
-			trace(FlxG.stage.width);
-			var x = random.int(0, Std.int(FlxG.stage.stageWidth));
-			var y = random.int(0, Std.int(FlxG.stage.stageHeight));
+			var x = random.int(0, this.width);
+			var y = random.int(0, this.height);
 
 			fish.move(x, y);
+
+			var vx = random.int(500, 1000) * (x >= width/2 ? -1 : 1);
+			var vy = random.int(100, 200) * (y >= height/2 ? -1 : 1);
+			fish.velocity(vx, vy);
+
 			this.entities.push(fish);
 		}
 	}
