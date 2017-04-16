@@ -76,8 +76,6 @@ class Entity
     public function move(x:Float, y:Float):Entity
     {
         this.add(new PositionComponent(x, y, this));
-        this.onEvent("Moved");
-
         return this;
     } 
     

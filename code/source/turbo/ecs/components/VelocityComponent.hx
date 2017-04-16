@@ -17,7 +17,6 @@ class VelocityComponent extends AbstractComponent
 
     override public function update(elapsedSeconds:Float):Void
     {
-        trace("e=" + elapsedSeconds + " vx=" + this.vx + " vy=" + this.vy);
         var pos = this.parent.get(PositionComponent);
         
         if (pos == null) {
@@ -29,7 +28,5 @@ class VelocityComponent extends AbstractComponent
 
         pos.x += deltaX;
         pos.y += deltaY;
-        this.trigger("Moved");
     }
-
 }
